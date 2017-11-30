@@ -1,5 +1,7 @@
 import sys
 
+from Global import MAX_NUMBER, MIN_NUMBER, DELTA, polynomial
+
 
 def sumar_num(val1, val2):
     """sumar_num :: Float x Float -> Float
@@ -51,3 +53,27 @@ def multip_num(val1, val2):
         print(val1.__class__.__name__)
         print(val2.__class__.__name__)
         raise TypeError("multip_num :: Se deben multiplicar valores que sean float")
+
+
+def fitness_fun(ast):
+    # generate test set
+    length = (MAX_NUMBER - MIN_NUMBER) / DELTA
+    sqrd_errors = 0
+    # ast.print()
+
+    for i in range(int(length)):
+        x = MIN_NUMBER + i * DELTA
+        if x == 0:
+            continue
+        expected_y = polynomial(x)
+        actual_y = ast.evaluate(x)
+        # print("x is " + str(x) + " expected: " + str(expected_y) + " actual: " + str(actual_y))
+        try:
+            sqrd_errors += (expected_y - actual_y) ** 2
+        except OverflowError:
+            # print("overflow")
+            sqrd_errors += sys.float_info.max
+    mean_sqrt_error = sqrd_errors / length
+
+    # print("    fitness is " + str(mean_sqrt_error))
+    return mean_sqrt_error
