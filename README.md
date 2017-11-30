@@ -19,7 +19,7 @@ El error cuadrático mínimo aceptable para un individuo perfecto es de 0.1.
 
 ## Fitness
 
-Se utiliza la suma de errores cuadrados entre el valor esperado y el valor actual obtenido mediante cada polinomio, para cada x entre -5 y 5.
+Se utiliza la suma de errores cuadrados entre el valor esperado y el valor actual obtenido, para cada polinomio, y para cada x (entre -5 y 5).
 
 Por lo que a menor fitness, mejor individuo.
 
@@ -31,6 +31,7 @@ Por Tournament Selection con k= 2 (modificable)
 Luego de configurar (ó por defecto), ejecutar script ```./Evolution.py```
 
 En pantalla aparecerá el mejor fitness por generación, y finalmente, aparecerá el AST resultado de la evolucion y su fitness.
+
 ## Configuración
 
 Se pueden modificar parámetros y el polinomio objetivo dentro del archivo 
