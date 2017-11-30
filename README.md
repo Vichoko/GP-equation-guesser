@@ -27,8 +27,8 @@ Se pueden modificar parametros y el polinomio objetivo dentro del archivo
 ### Constantes numericas
 
 ```
-MAX_NUMBER = 5.0  # valor maximo de coeficiente y de x
-MIN_NUMBER = -5.0 # valor minimo de coeficiente y de x
+MAX_NUMBER = 5.0  # valor maximo de coeficiente & x
+MIN_NUMBER = -5.0 # valor minimo de coeficiente & x
 MAX_DEPTH = 5 # profunidad maxima de AST generado aleatoriamente
 MIN_ACCEPTABLE_ERROR = 0.1 # error minimo aceptable para ser individuo perfecto
 DELTA = 0.1 # Paso de discretizacion de x entre MAX_NUMBER y MIN_NUMBER
