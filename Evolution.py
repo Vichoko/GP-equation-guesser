@@ -47,6 +47,7 @@ def evolution_loop():
     gen_counter = 0
     run = True
     perfect_individual = None
+    print("Starting Evolution")
     while run:
         gen_counter += 1
         # calculate fitness
@@ -86,8 +87,10 @@ def evolution_loop():
             offspring.append(son)
         # after offspring generation, replace previous population
         population = offspring
+    print(" Evolution ended")
+    print(" Best individual is: ")
     perfect_individual.print()
-    print(str(perfect_individual.fitness))
+    print("Best Fitness: " + str(perfect_individual.fitness))
 
 
 if __name__ == "__main__":
