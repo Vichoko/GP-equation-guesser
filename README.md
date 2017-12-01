@@ -28,9 +28,31 @@ Por lo que a menor fitness, mejor individuo.
 Por Tournament Selection con k= 2 (modificable)
 
 ## Ejecución
+
 Luego de configurar (ó por defecto), ejecutar script ```./Evolution.py```
 
 En pantalla aparecerá el mejor fitness por generación, y finalmente, aparecerá el AST resultado de la evolucion y su fitness.
+
+Además, aparecerá un gráfico de la evolución del fitness mínimo y medio, acorde al paso de las generaciones.
+
+## Análisis
+
+Se probó la implementación con polinomios de distinta dificultad (polinomios de grado 3, 2 y 1).
+
+A medida que se aumenta el grado del polinomio, la dificultad del problema aumenta dado que el AST que se debe converger es más grande, lo que implica mayor tiempo de procesamiento por AST y, además, al tener más nodos, es más variable entre una generación y otra.
+
+La implementación funciona para todos los polinomios que se han probado, mostrando una curva de aprendizaje que tiende a un mínimo de errores cuadrados.
+
+Se nota, para el mismo polinomio, distintas ejecuciones tardan distinta cantidad de generaciones; esto se puede deber a la configuración aleatoria inicial.
+
+Los polinomios que se probaron fueron:
+
+```
+3 * x ** 2 + 2 * x + 3
+3 * x ** 2 + 2 * x + 3 + x ** 3
+x + 1
+
+```
 
 ## Configuración
 
@@ -58,6 +80,7 @@ TOURNAMENT_K = 2  # Elecciones en selección por torneo
 ```
 
 ### Expresión objetivo
+
 Aparte de poder configurar el polinomio a gusto, se debe variar la constante ```NUMBER_OF_OPERATIONS``` , para prevenir que se generes AST excesivamente grandes que obstruyan la ejecución.
 
 ```
@@ -67,3 +90,4 @@ def polynomial(x):
     return 3*x**2 + 2*x + 3 + x**3
 
 ```
+

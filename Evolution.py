@@ -6,6 +6,7 @@ import numpy as np
 from AST import Ast
 from Global import POPULATION_SIZE, CROSSOVER_CHANCE, SEX_CHANCE, MUTATION_CHANCE, TOURNAMENT_K, NUMBER_OF_OPERATIONS, \
     MIN_ACCEPTABLE_ERROR
+from Utils import Analytics
 
 
 def tournament_select(pop, k):
@@ -48,23 +49,20 @@ def evolution_loop():
     run = True
     perfect_individual = None
     print("Starting Evolution")
+    analytics = Analytics()
     while run:
         gen_counter += 1
         # calculate fitness
-        best_fitness = sys.float_info.max
-        best_individual = None
         for ast in population:
             fitness = ast.get_fitness()
+            analytics.dispatch_data(gen_counter, fitness)
             if fitness <= MIN_ACCEPTABLE_ERROR:
                 perfect_individual = ast
                 run = False
                 break
-            if fitness < best_fitness:
-                best_fitness = fitness
-                best_individual = ast
         if not run:
             break
-        print("gen " + str(gen_counter) + " best fitness: " + str(best_fitness))
+        analytics.close_round()
         # reproduce & mutate
         offspring = []
         while len(offspring) < POPULATION_SIZE:
@@ -91,7 +89,9 @@ def evolution_loop():
     print(" Best individual is: ")
     perfect_individual.print()
     print("Best Fitness: " + str(perfect_individual.fitness))
+    analytics.plot()
 
 
 if __name__ == "__main__":
     evolution_loop()
+
